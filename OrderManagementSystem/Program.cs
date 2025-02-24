@@ -21,6 +21,20 @@ namespace OrderManagementSystem
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.MapControllerRoute(
+                name: "default",
+                pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapControllerRoute(
+                name: "users",
+                pattern: "User/Index", // Route for the user page
+                defaults: new { controller = "User", action = "Index" });
+
+            app.MapControllerRoute(
+                name: "orders",
+                pattern: "Order/Index", // Route for the order page
+                defaults: new { controller = "Order", action = "Index" });
+
 
             app.UseRouting();
 
